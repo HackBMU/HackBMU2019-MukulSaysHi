@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body>
+</body>
+<!-- <button id="get">GET</button>
+<button id="post">POST</button> -->
+<section class="register-block" id="f3">
+    <div class="login-page info">
+        <div class="form">
+            <h2>Find your vehicle</h2>
+            <form class="login-form" id="report">
+                <h3 align="left">Details of owner</h3>
+                <div id="dotLine"></div>
+                <input class="input-custom reg-inp" type="text" name="name" id="sname" placeholder="Your Full Name"><br>
+
+                <input class="input-custom reg-inp" type="text" name="phone" id="father" placeholder="Phone number"><br>
+
+                <input class="input-custom reg-inp" type="text" name="mail" id="rno" placeholder="E-Mail Id"><br>
+
+                <div>
+                    <div class="w3-container">
+                        <div class="w3-bar ">
+                            <button class="w3-bar-item tablink" style="background-color : #00C7FF; color: #FFFFFF"
+                                id="dt1">Upload picture of stolen car</button>
+                            <button class="w3-bar-item tablink" style="background-color: #F2F2F2;color: #8B8B8B"
+                                id="dt2">Enter details manually</button>
+                        </div>
+
+                        <div id="dt1tab" class="w3-container w3-border city">
+                            <form action="http://3bf3b163.ngrok.io/postimg/" enctype="multipart/form-data"
+                                method="post">
+                                <br>
+                                <p align="left">Upload picture of the stolen car<br></p>
+                                <input type="file" name="datafile" size="40">
+                                <div>
+                                    <input type="submit" value="Send">
+                                </div>
+                            </form>
+                        </div>
+
+                        <div id="dt2tab" class="w3-container w3-border city" style="display:none">
+
+                        </div>
+                    </div>
+                </div>
+                <br>
+
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+</section>
+<script src="main.js"></script>
+
+</html>

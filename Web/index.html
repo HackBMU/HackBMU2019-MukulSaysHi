@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="dom-to-image.js"></script>
 </head>
 
 <body>
@@ -43,12 +44,11 @@
                         </div>
 
                         <div id="dt1tab" class="w3-container w3-border city">
-                            <form id="imgForm" action="https://api.imgur.com/3/image" enctype="multipart/form-data"
-                                method="post">
+                            <form id="imgForm" enctype="multipart/form-data">
                                 <br>
                                 <p align="left">Upload picture of the stolen car<br></p>
                                 <input type="file" name="datafile" accept="image/*" size="40" id="inpFile"
-                                    onchange="show.call(this); upl.call(this)" name="mukul">
+                                    onchange="show.call(this);">
                                 <img src="" style="display: none;" height="200" id="uplImage">
                             </form>
                         </div>

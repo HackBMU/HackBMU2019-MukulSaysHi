@@ -1,3 +1,38 @@
+var imgData = ''
+
+$('#finalSubmit').click(function () {
+    var formDetails = {
+        'name': $('#name').val(),
+        'pno': $('#pno').val(),
+        'mail': $('#mail').val(),
+        'manual': {
+            'color': $('#color').val(),
+            'model': $('#model').val(),
+            'license': $('#license').val()
+        },
+        'image': imgData
+    }
+    var str = JSON.stringify(formDetails)
+    console.log(formDetails)
+    $.ajax({
+        type: 'POST',
+        url: 'http://3bf3b163.ngrok.io/postimg/', //	https://api.imgur.com/3/image
+        data: str,
+        cache: false,
+        contentType: false,
+        processData: false,
+        enctype: 'multipart/form-data',
+        success: function (data) {
+            console.log("successfully uploaded");
+            console.log("d" + data);
+        },
+        error: function (data) {
+            console.log("error");
+            console.log("e" + data);
+        }
+    });
+})
+
 $('#dt1').click(function () {
     $('#dt2tab').hide()
     $('#dt1tab').show()
@@ -50,87 +85,19 @@ function show() {
             var img = document.getElementById("uplImage")
             img.src = data.target.result;
             img.style.display = "block";
-            var c = document.getElementById("myCanvas");
-            var ctx = c.getContext("2d");
-            ctx.drawImage(img, 10, 10);
-            console.log(c.toDataURL())
-            // console.log(getBase64Image(img))
+            domtoimage.toPng(img)
+                .then(function (dataUrl) {
+                    console.log("................." + dataUrl)
+                    imgData = dataUrl
+                    var link = document.createElement('a');
+                    link.download = 'my-image-name.jpeg';
+                    link.href = dataUrl;
+                    link.click();
+                })
+                .catch(function (error) {
+                    console.error('oops, something went wrong!', error);
+                });
         }
         fr.readAsDataURL(this.files[0])
     }
-}
-
-function getBase64Image(img) {
-    // Create an empty canvas element
-    var canvas = document.createElement("canvas");
-    canvas.width = img.width;
-    canvas.height = img.height;
-
-    // Copy the image contents to the canvas
-    var ctx = canvas.getContext("2d");
-    ctx.drawImage(img, 0, 0);
-
-    // Get the data-URL formatted image
-    // Firefox supports PNG and JPEG. You could check img.src to
-    // guess the original format, but be aware the using "image/jpg"
-    // will re-encode the image.
-    var dataURL = canvas.toDataURL("image/png");
-
-    return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
-}
-
-function toDataURL(src, callback) {
-    var image = new Image();
-    image.crossOrigin = 'Anonymous';
-    image.onload = function () {
-        var canvas = document.createElement('canvas');
-        var context = canvas.getContext('2d');
-        canvas.height = this.naturalHeight;
-        canvas.width = this.naturalWidth;
-        context.drawImage(this, 0, 0);
-        var dataURL = canvas.toDataURL('image/jpeg');
-        callback(dataURL);
-    };
-    image.src = src;
-}
-
-// toDataURL('https://www.gravatar.com/avatar', function(dataURL) {
-//     console.log(dataURL)
-// });
-
-$('#finalSubmit').click(function () {
-    var formDetails = {
-        'name': $('#name').val(),
-        'pno': $('#pno').val(),
-        'mail': $('#mail').val(),
-        'manual': {
-            'color': $('#color').val(),
-            'model': $('#model').val(),
-            'license': $('#license').val()
-        },
-        'image': ''
-    }
-    var str = JSON.stringify(formDetails)
-    console.log(formDetails)
-    $.ajax({
-        type: 'POST',
-        url: 'http://3bf3b163.ngrok.io/postimg/', //	https://api.imgur.com/3/image
-        data: str,
-        cache: false,
-        contentType: false,
-        processData: false,
-        enctype: 'multipart/form-data',
-        success: function (data) {
-            console.log("successfully uploaded");
-            console.log("d" + data);
-        },
-        error: function (data) {
-            console.log("error");
-            console.log("e" + data);
-        }
-    });
-})
-
-function b64() {
-
 }

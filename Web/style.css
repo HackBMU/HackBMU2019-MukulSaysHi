@@ -11,9 +11,9 @@ body {
 
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 .login-page {
-    width: 360px;
     padding: 0% 0 0;
     margin: auto;
+    width: 100%;
 }
 
 .form {
@@ -129,12 +129,6 @@ body {
     text-align: left;
 }
 
-.info {
-    width: 100%;
-    padding: 8% 0 0;
-    margin: auto;
-}
-
 .quiz {
     text-align: left;
 }
@@ -150,7 +144,8 @@ body {
 #dotLine {
     width: 100%;
     height: 0px;
-    border-bottom: black 2px dashed;
+    opacity: 0.8;
+    border-bottom: #00c7ff 2px dashed;
     margin-bottom: 30px;
 }
 
@@ -163,4 +158,14 @@ h3{
     align-content: center;
     padding-left: 40%;
     margin-bottom: 30px;
+}
+
+h2 {
+    color: #00c7ff;
+font-weight: 700;
+}
+
+h3{
+    color: #444343;
+    font-weight: 500;
 }
